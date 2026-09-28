@@ -1,1 +1,1 @@
-# multiagent_system
+# Multi-agent Research System

@@ -1,11 +1,9 @@
-from multi_agent_research_system.tools.tools import web_search, scrape_url
+from multi_agent_research_system.pipelines.pipeline import run_research_pipeline
 
 def main():
-    """query = "Latest advancements in AI research"
-    out = web_search(query)   
-    print(out)"""
-    url = "https://medium.com/@vkt08/seeing-clearly-demystifying-object-detection-performance-metrics-58ac103ae6b3"
-    content = scrape_url(url)
-    print(content)
+    topic = "Latest advancements in AI research"
+    state = run_research_pipeline(topic)
+    print(state)
+
 if __name__ == "__main__":
     main()

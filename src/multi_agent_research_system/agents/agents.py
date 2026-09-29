@@ -1,13 +1,21 @@
+import os
+
 from langchain.agents import create_agent
 from langchain_openai import ChatOpenAI
 #from langchain_core.output_parsers import StructuredOutputParser
 from langchain_core.prompts import ChatPromptTemplate
-from src.multi_agent_research_system.tools.tools import web_search, scrape_url  
+from multi_agent_research_system.tools.tools import web_search, scrape_url
 from dotenv import load_dotenv
 
 load_dotenv()  # Load environment variables from .env file
 # model initialization
-llm = ChatOpenAI(model = "openai/gpt-oss-20b", temperature=0.2, max_tokens=2000)  # Initialize the language model
+llm = ChatOpenAI(
+    model="openai/gpt-oss-20b",
+    base_url="https://api.groq.com/openai/v1",
+    api_key=os.getenv("GROQ_API_KEY") or os.getenv("OPENAI_API_KEY"),
+    temperature=0.2,
+    max_tokens=2000,
+)  # Initialize the language model
 
 # will search internet and get urls
 def build_search_agent():

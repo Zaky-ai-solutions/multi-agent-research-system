@@ -521,7 +521,7 @@ if st.session_state.running and not st.session_state.done:
         results["writer"] = writer_chain.invoke({
             "topic": topic_val,
             "research": research_combined
-        })
+        }).content
 
         st.session_state.results = dict(results)
 
@@ -530,7 +530,7 @@ if st.session_state.running and not st.session_state.done:
 
         results["critic"] = critic_chain.invoke({
             "report": results["writer"]
-        })
+        }).content
 
         st.session_state.results = dict(results)
 
